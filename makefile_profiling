@@ -1,0 +1,15 @@
+CC=mpicxx-vt -vt:seq 
+
+output: groupsAlgorithm.o dbscan.o
+	$(CC) -o output groupsAlgorithm.o dbscan.o -lm
+
+groupsAlgorithm.o: groupsAlgorithm.cpp
+	$(CC) -c groupsAlgorithm.cpp -lm
+
+dbscan.o: dbscan.cpp
+	$(CC) -c dbscan.cpp -lm
+
+
+clean:
+	rm *.o
+	rm output

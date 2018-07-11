@@ -1,0 +1,17 @@
+#CC=mpicc-vt -vt:seq
+CC=gcc -fno-use-linker-plugin -pg
+output_c: vector_c.o groupsAlgorithm_c.o dbscan_c.o
+	$(CC) -o output_c vector_c.o groupsAlgorithm_c.o dbscan_c.o -lm
+
+groupsAlgorithm_c.o: vector_c.o groupsAlgorithm_c.c
+	$(CC) -c groupsAlgorithm_c.c -lm
+
+dbscan_c.o: vector_c.o dbscan_c.c
+	$(CC) -c dbscan_c.c -lm
+
+vector_c.o: vector_c.c
+	$(CC) -c vector_c.c -lm
+
+clean:
+	rm *.o
+	rm output_c

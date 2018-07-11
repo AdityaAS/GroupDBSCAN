@@ -1,0 +1,15 @@
+CC=g++
+
+output_cpp:  groupsAlgorithm_cpp.o dbscan_cpp.o
+	$(CC) -o output_cpp groupsAlgorithm_cpp.o dbscan_cpp.o -lm
+
+groupsAlgorithm_cpp.o: groupsAlgorithm_cpp.cpp
+	$(CC) -c groupsAlgorithm_cpp.cpp -lm
+
+dbscan_cpp.o: dbscan_cpp.cpp
+	$(CC) -c dbscan_cpp.cpp -lm
+
+clean:
+	rm *.o
+	rm output_cpp
+
